@@ -1,31 +1,42 @@
-﻿@{
-    ViewBag.Title = "Home Page";
-}
-
+﻿@using popsicle.Models;
+@model IEnumerable<Quiz>
 <div class="jumbotron">
-    <h1>ASP.NET</h1>
-    <p class="lead">ASP.NET is a free web framework for building great Web sites and Web applications using HTML, CSS and JavaScript.</p>
-    <p><a href="http://asp.net" class="btn btn-primary btn-lg">Learn more &raquo;</a></p>
+    <h2><strong> 最新、最準、最超值、最好玩的心理遊戲</strong></h2>
+    <p class="lead">
+        <img src="~/Content/image/Psi2.svg" />讓你在遊戲中發現自已性格的神祕基因，輕鬆看透別人的內心
+     </p>
+    <p style="height: 72px;"></p>
 </div>
-
-<div class="row">
-    <div class="col-md-4">
-        <h2>Getting started</h2>
-        <p>
-            ASP.NET MVC gives you a powerful, patterns-based way to build dynamic websites that
-            enables a clean separation of concerns and gives you full control over markup
-            for enjoyable, agile development.
-        </p>
-        <p><a class="btn btn-default" href="http://go.microsoft.com/fwlink/?LinkId=301865">Learn more &raquo;</a></p>
-    </div>
-    <div class="col-md-4">
-        <h2>Get more libraries</h2>
-        <p>NuGet is a free Visual Studio extension that makes it easy to add, remove, and update libraries and tools in Visual Studio projects.</p>
-        <p><a class="btn btn-default" href="http://go.microsoft.com/fwlink/?LinkId=301866">Learn more &raquo;</a></p>
-    </div>
-    <div class="col-md-4">
-        <h2>Web Hosting</h2>
-        <p>You can easily find a web hosting company that offers the right mix of features and price for your applications.</p>
-        <p><a class="btn btn-default" href="http://go.microsoft.com/fwlink/?LinkId=301867">Learn more &raquo;</a></p>
-    </div>
+ 
+<div class="row indexQuiz">
+    @foreach (Quiz item in Model)
+    {
+        <div class="col-md-4">
+            <div>
+                <h2><strong>@item.title</strong></h2>
+                <p>@item.description</p>
+                <p>@Html.ActionLink("開始測驗 >>", "About",
+                  new { quizID = item.ID }, new { @class = "btn btn-default" })</p> 
+            </div> 
+        </div>
+        if (item.ID == 3) { break; }
+    }
 </div>
+<div class="row indexQuiz">
+    @foreach (Quiz item in Model)
+    {
+        if (item.ID < 4) { continue; }
+            <div class="col-md-4">
+                <div>
+                    <h2>@item.title</h2>
+                    <p>@item.description</p>
+                    <p>@Html.ActionLink("開始測驗 >>", "About",
+                      new { quizID=item.ID}, new {@class= "btn btn-default" } )</p> 
+                      @*actionName,ruoutValue,htmlValue*@                
+                </div> 
+            </div>
+    }
+</div>
+@*@section JavaScript{
+    <script type="text/javascript" src="@Url.Content("~/Scripts/site/homeIndex.js")"></script>
+  }*@

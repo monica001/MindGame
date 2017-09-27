@@ -1,7 +1,35 @@
-﻿@{
-    ViewBag.Title = "About";
-}
-<h2>@ViewBag.Title.</h2>
-<h3>@ViewBag.Message</h3>
+﻿@using popsicle.Models;
+@model Quiz
 
-<p>Use this area to provide additional information.</p>
+<div class="wrapper">
+    <div class="row">
+        <div class="col-md-12 picture">
+            <img src="~/Content/image/@Model.imagePath" />
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-12">
+            <h4>@Model.description</h4>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-6">
+            <ol class="quizList" style="list-style-type:upper-alpha;">
+                @foreach (var item in Model.QuizAnalyze)
+            {
+                    <li><a anaID="@item.QuizAnalyzeID">@item.Option</a></li>
+                }
+            </ol>
+        </div>
+        <div class="col-md-6 readAnswer">
+            <p>解析區</p>
+            <div class="answer">
+            </div>
+        </div>
+    </div>
+    <div class="row backIndex">
+        <div class="col-md-12">
+            <button class="btn btn-default">回首頁</button>
+        </div>
+    </div>
+</div>
