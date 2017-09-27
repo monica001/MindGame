@@ -4,7 +4,7 @@ using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Web;
 
-namespace popsicle.Models
+namespace MindGame.Models
 {
     public class Quiz
     {

@@ -1,13 +1,13 @@
 ﻿using Newtonsoft.Json;
-using popsicle.DAL;
-using popsicle.Models;
+using MindGame.DAL;
+using MindGame.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 
-namespace popsicle.Controllers
+namespace MindGame.Controllers
 {
     public class HomeController : Controller
     {
